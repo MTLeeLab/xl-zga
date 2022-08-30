@@ -1,0 +1,28 @@
+# both
+bothL_us <- read.table('enh/landmark/closest/both_on_L_us.bed', header=F, sep="\t")
+bothL_ds <- read.table('enh/landmark/closest/both_on_L_ds.bed', header=F, sep="\t")
+bothS_us <- read.table('enh/landmark/closest/both_on_S_us.bed', header=F, sep="\t")
+bothS_ds <- read.table('enh/landmark/closest/both_on_S_ds.bed', header=F, sep="\t")
+bothL_agg <- merge(aggregate(bothL_us, bothL_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(bothL_ds, bothL_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+bothS_agg <- merge(aggregate(bothS_us, bothS_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(bothS_ds, bothS_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+# L
+LonL_us <- read.table('enh/landmark/closest/L_on_L_us.bed', header=F, sep="\t")
+LonL_ds <- read.table('enh/landmark/closest/L_on_L_ds.bed', header=F, sep="\t")
+LonS_us <- read.table('enh/landmark/closest/L_on_S_us.bed', header=F, sep="\t")
+LonS_ds <- read.table('enh/landmark/closest/L_on_S_ds.bed', header=F, sep="\t")
+LonL_agg <- merge(aggregate(LonL_us, LonL_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(LonL_ds, LonL_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+LonS_agg <- merge(aggregate(LonS_us, LonS_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(LonS_ds, LonS_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+# S
+SonS_us <- read.table('enh/landmark/closest/S_on_S_us.bed', header=F, sep="\t")
+SonS_ds <- read.table('enh/landmark/closest/S_on_S_ds.bed', header=F, sep="\t")
+SonL_us <- read.table('enh/landmark/closest/S_on_L_us.bed', header=F, sep="\t")
+SonL_ds <- read.table('enh/landmark/closest/S_on_L_ds.bed', header=F, sep="\t")
+SonS_agg <- merge(aggregate(SonS_us, SonS_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(SonS_ds, SonS_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+SonL_agg <- merge(aggregate(SonL_us, SonL_us['V4'],paste,collapse=',')[,c(1,10)],aggregate(SonL_ds, SonL_ds['V4'],paste,collapse=',')[,c(1,10)], by='V4', suffix=c(".us",".ds"))
+# write out files with peak ID, upstream, and downstream genes 
+write.table(bothL_agg, "enh/landmark/agg/bothL_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write.table(bothS_agg, "enh/landmark/agg/bothS_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write.table(LonL_agg, "enh/landmark/agg/LonL_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write.table(LonS_agg, "enh/landmark/agg/LonS_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write.table(SonL_agg, "enh/landmark/agg/SonL_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
+write.table(SonS_agg, "enh/landmark/agg/SonS_agg.txt", sep="\t", quote=F, row.names=F, col.names=F)
