@@ -13,8 +13,8 @@ mkdir -p lift/500bp
 mkdir -p lift/5kb
 mkdir -p lift/combined
 
-cut -f1-4 ../reg_thresh/distal_k27high.bed ../reg_thresh/proximal_k27high.bed | grep -v chrUn | sort -k4,4 > lift/enh.bed
-liftOver -minMatch=0.1 enh.bed $CHAIN lift/500bp/enh_lift.bed lift/500bp/unmapped.txt
+cut -f1-4 files/data/distal_k27high.bed files/data/proximal_k27high.bed | grep -v chrUn | sort -k4,4 > lift/enh.bed
+liftOver -minMatch=0.1 lift/enh.bed $CHAIN lift/500bp/enh_lift.bed lift/500bp/unmapped.txt
 
 # For the S->L liftover, match with original L enhancers
 # Redundant because matching enhancers can be many-many
@@ -176,7 +176,7 @@ BIGBED
 
 # Make versions of the BED4 files centered on each region
 
-#:<<"SEQFASTA"
+:<<"SEQFASTA"
 
 function BEDMIDPT () {
 	awk -v OFS="\t" '{midpt=int(($3+$2)/2); print $1,midpt,midpt+1,$4}' $1	
@@ -209,5 +209,6 @@ bedtools slop -b 100 -g $CHRSIZES -i lift/combined/distal_L_on_S_1bp.bed | grep 
 bedtools slop -b 100 -g $CHRSIZES -i lift/combined/distal_S_on_L_1bp.bed | grep distal | bedtools getfasta -nameOnly -fi $GENOME -bed - -fo lift/combined/distal_S_on_L_200bp.fa
 bedtools slop -b 100 -g $CHRSIZES -i lift/combined/distal_S_on_S_1bp.bed | grep distal | bedtools getfasta -nameOnly -fi $GENOME -bed - -fo lift/combined/distal_S_on_S_200bp.fa
 
+SEQFASTA
 
 exit

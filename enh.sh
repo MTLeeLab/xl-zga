@@ -7,7 +7,7 @@ CHRSIZES=files/anno/chr_sizes.txt
 CHAIN=files/chains/xlL_xlS_med.liftOver.chain
 ATAC_BED=files/beds/s9_atac_hq.bed
 K27_BED=files/beds/s8_k27ac_hq.bed
-K27AC_BW=files/beds/s8_k27ac_hq.bw
+K27AC_BW=files/bigwigs/s8_k27ac_hq.bw
 NOAB_BW=files/bigwigs/pool_noab_hq.bw
 HIGH=files/data/distal_k27high_chr.bed
 LOW=files/data/distal_k27low_chr.bed
@@ -19,7 +19,7 @@ GO=files/anno/xb_go_terms.txt
 HOMEO=files/data/homeolog_pairs_expanded.txt
 
 
-:<<"HEATMAPS"
+#:<<"HEATMAPS"
 # make directories
 mkdir -p enh/heatmap
 mkdir -p enh/heatmap/regions
@@ -90,8 +90,9 @@ awk -v OFS="\t" -v FS="\t" 'k27pm=1000000/23598517, atacpm=1000000/14663728 {pri
 # t-test of log2 rpm - k27;atac - L;LS;S
 Rscript k27atac_quant.R
 
-HEATMAPS
+#HEATMAPS
 
+exit
 :<<"SUPP"
 
 # plot heatmaps for  st10 and st12 atac and k27ac data
