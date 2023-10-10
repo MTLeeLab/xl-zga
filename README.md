@@ -12,7 +12,6 @@ This repository contains unix and R scripts used to conduct the computational an
 ### Notes
 
 * Within the working directory, create a 'files' directory and populate it with the directories 'anno', 'bams', 'beds', 'bigwigs', and 'chains'. All above annotation files should be placed in 'anno' and all data files provided/required in this study should be placed in the appropriate files directory before running any scripts.
-* As of 9/1/22, the provided python script must be manually altered at the last line and run three times total to properly match the both on total, L on total, and S on total files that are generated in the enh cmds script.
 
 
 ## Authors
