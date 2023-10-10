@@ -1,6 +1,6 @@
 # Hybridization led to a rewired pluripotency network in the allotetraploid Xenopus laevis - Analysis scripts
 
-This repository contains unix and R scripts used to conduct the computational analyses for Phelps et al 2023, Hybridization led to a rewired pluripotency network in the allotetraploid Xenopus laevis, eLife https://doi.org/10.7554/eLife.83952
+This repository contains unix and R scripts used to conduct the computational analyses for the first submission of Phelps et al 2023, Hybridization led to a rewired pluripotency network in the allotetraploid Xenopus laevis, eLife https://doi.org/10.7554/eLife.83952 .
 
 ### Dependencies
 
